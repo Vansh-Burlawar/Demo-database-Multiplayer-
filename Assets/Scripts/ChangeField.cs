@@ -17,7 +17,6 @@ public class ChangeField : MonoBehaviour
         firstInput.Select();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift))
