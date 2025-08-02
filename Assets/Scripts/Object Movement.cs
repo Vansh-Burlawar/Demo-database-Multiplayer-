@@ -12,25 +12,25 @@ public class ObjectMovement : MonoBehaviour
     {
         Vector3 moveDir = new Vector3(0, 0, 0);
 
-        if (Input.GetKey(KeyCode.w))
+        if (Input.GetKey(KeyCode.W))
         {
             moveDir.z += 1;
         }
-        if (Input.GetKey(KeyCode.s))
+        if (Input.GetKey(KeyCode.S))
         {
             moveDir.z -= 1;
         }
-        if (InputKey(KeyCode.a))
+        if (Input.GetKey(KeyCode.A))
         {
             moveDir.x -= 1; 
         }
-        if (Input.GetKey(KeyCode.d))
+        if (Input.GetKey(KeyCode.D))
         {
             moveDir.x += 1;
         }
 
         float MoveSpeed = 4f;
-
+        
         transform.Translate(moveDir * MoveSpeed * Time.deltaTime);
     }
 }
