@@ -18,7 +18,8 @@ public class PlayFabManager : MonoBehaviour
     
    public void RegisterButton()
     {
-        if(PasswordText.text.Length < 4)
+        Debug.Log("Register button clicked");
+        if (PasswordText.text.Length < 4)
         {
             Textmessage.text = "Its a small password ";
             return;
@@ -47,7 +48,8 @@ public class PlayFabManager : MonoBehaviour
     }
     void Start()
     {
-        
+        PlayFabSettings.staticSettings.TitleId = "135FB8";
+        Textmessage.text = "Hello from Start!";
     }
 
     // Update is called once per frame
