@@ -6,6 +6,7 @@ using PlayFab.ClientModels;
 using UnityEngine.UI;
 using UnityEditor.PackageManager;
 using TMPro;
+using System.IO;
 
 
 public class PlayFabManager : MonoBehaviour
@@ -14,9 +15,10 @@ public class PlayFabManager : MonoBehaviour
     public TMP_Text Textmessage;
     public TMP_InputField EmailText;
     public TMP_InputField PasswordText;
+    public TMP_InputField AgeText;
 
-    
-   public void RegisterButton()
+
+    public void RegisterButton()
     {
         Debug.Log("Register button clicked");
         if (PasswordText.text.Length < 4)
@@ -35,9 +37,22 @@ public class PlayFabManager : MonoBehaviour
 
     public void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        Textmessage.text="Registration Successful !!!";
+        Textmessage.text = "Registration Successful !!!";
+        var request = new UpdateUserDataRequest
+        {
+            Data = new Dictionary<string, string>
+            {
+                { "Age", AgeText.text },
+            }
+        
+        
+    };
+    PlayFabClientAPI.UpdateUserData(request, OnSussefulAgeUpdate, OnRegisterError);
+}
+    public void OnSussefulAgeUpdate(UpdateUserDataResult result)
+    {
+        Textmessage.text = "Age Updated Successfully !!!";
     }
-
     public void OnRegisterError(PlayFabError error)
     {
         Textmessage.text = error.ErrorMessage;
