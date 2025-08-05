@@ -8,6 +8,7 @@ using UnityEditor.PackageManager;
 using TMPro;
 using System.IO;
 using UnityEditor.VersionControl;
+using UnityEngine.SceneManagement;
 
 
 public class PlayFabManager : MonoBehaviour
@@ -58,7 +59,7 @@ public class PlayFabManager : MonoBehaviour
     {
         Textmessage.text = error.ErrorMessage;
     }
-     public void LoginButton()
+     public void LoginButton() //eg email abcd@gmail.com and pass 123456789
     {
         var request= new LoginWithEmailAddressRequest{
            Email= EmailText.text,
@@ -70,6 +71,14 @@ public class PlayFabManager : MonoBehaviour
     public void OnLoginSuccess(LoginResult result)
     {
         Textmessage.text = "Successfull Login !!";
+        StartCoroutine(loadSceneafterDelay());
+        
+    }
+
+    IEnumerator loadSceneafterDelay()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("Game");
     }
     void Start()
     {
