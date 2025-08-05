@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEditor.PackageManager;
 using TMPro;
 using System.IO;
+using UnityEditor.VersionControl;
 
 
 public class PlayFabManager : MonoBehaviour
@@ -59,7 +60,16 @@ public class PlayFabManager : MonoBehaviour
     }
      public void LoginButton()
     {
+        var request= new LoginWithEmailAddressRequest{
+           Email= EmailText.text,
+                Password = PasswordText.text
+        };
+        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnRegisterError);
+    }
 
+    public void OnLoginSuccess(LoginResult result)
+    {
+        Textmessage.text = "Successfull Login !!";
     }
     void Start()
     {
