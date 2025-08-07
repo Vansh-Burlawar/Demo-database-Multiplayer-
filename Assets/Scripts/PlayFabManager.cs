@@ -4,10 +4,10 @@ using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
-using UnityEditor.PackageManager;
+
 using TMPro;
 using System.IO;
-using UnityEditor.VersionControl;
+
 using UnityEngine.SceneManagement;
 
 

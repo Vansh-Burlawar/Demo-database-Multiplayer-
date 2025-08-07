@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class ObjectMovement : MonoBehaviour
+public class ObjectMovement : NetworkBehaviour
 {
     // Start is called before the first frame update
   
@@ -10,6 +11,11 @@ public class ObjectMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!IsOwner)
+        {
+            return;
+        }
         Vector3 moveDir = new Vector3(0, 0, 0);
 
         if (Input.GetKey(KeyCode.W))
