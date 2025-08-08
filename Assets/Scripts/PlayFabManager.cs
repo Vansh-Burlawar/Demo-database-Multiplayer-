@@ -83,7 +83,7 @@ public class PlayFabManager : MonoBehaviour
     void Start()
     {
         PlayFabSettings.staticSettings.TitleId = "135FB8";
-        Textmessage.text = "Hello from Start!";
+        Textmessage.text = "Please Login or Register to this game before starting ";
     }
 
     // Update is called once per frame
